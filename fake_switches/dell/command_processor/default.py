@@ -31,6 +31,7 @@ class DellDefaultCommandProcessor(BaseCommandProcessor):
 
     def continue_enabling(self, line):
         self.replace_input = False
+        print(line)
         if line == "" or line in self.switch_configuration.privileged_passwords:
             self.write_line("")
             self.move_to(self.enabled_processor)

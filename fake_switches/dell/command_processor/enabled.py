@@ -113,9 +113,9 @@ class DellEnabledCommandProcessor(BaseCommandProcessor):
                     else:
                         self.show_vlan_page([vlan])
 
-
         elif "interfaces".startswith(args[0]) and "status".startswith(args[1]):
             self.show_page(self.get_interfaces_status_output())
+
         elif "version".startswith(args[0]):
             self.show_version()
 
