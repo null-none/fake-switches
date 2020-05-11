@@ -16,11 +16,15 @@
 class ShellSession(object):
     def __init__(self, command_processor):
         self.command_processor = command_processor
+        if self.command_processor.switch_configuration.auto_enabled:
+            self.command_processor.process_command('enable')
+            self.command_processor.process_command(self.command_processor.switch_configuration.privileged_passwords)
 
         self.command_processor.show_prompt()
 
     def receive(self, line):
         self.command_processor.logger.debug("received: %s" % line)
+
         try:
             processed = self.command_processor.process_command(line)
         except TerminalExitSignal:
