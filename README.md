@@ -133,13 +133,13 @@ class MyPort(Port):
     def access_vlan(self, value):
         if self._access_vlan != value:
             self._access_vlan = value
-            print "This could add vlan to eth0"
+            print("This could add vlan to eth0")
 
 
 if __name__ == '__main__':
     ssh_service = SwitchSshService(
         ip="127.0.0.1",
-        ssh_port=11001,
+        port=11001,
         switch_core=CiscoSwitchCore(MySwitchConfiguration("127.0.0.1", "my_switch", ports=[MyPort("FastEthernet0/1")])))
     ssh_service.hook_to_reactor(reactor)
     reactor.run()
